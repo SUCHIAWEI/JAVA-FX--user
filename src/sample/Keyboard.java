@@ -1,0 +1,67 @@
+package sample;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.util.Random;
+
+public class Keyboard {
+    Controller c;
+    Button btn[] ;
+
+    @FXML
+    private Button btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10;
+    @FXML
+    private Button change ;
+    @FXML
+    private Button send;
+    private Random ran = new Random(9);
+    @FXML
+    private PasswordField ps;
+
+    public void setC(Controller c) {
+        this.c = c;
+    }
+
+    public void setBtn(Button[] j){
+        this.btn = j;
+    }
+
+
+    public void ran(ActionEvent event){
+        Button button = (Button) event.getSource();
+        ps.setText(ps.getText()+button.getText());
+    }
+    @FXML
+    public void change(ActionEvent event){
+        Random ran = new Random();
+        int a[] = new int[10];
+        Button b[]= new Button[10];
+
+
+        for (int i = 0 ;i<10 ; i++){
+            a[i]= ran.nextInt(10);
+            for (int j=0 ; j<i;){
+                if (a[j] == a[i]){
+                    a[i]= ran.nextInt(10);
+                    j=0;
+                }
+                else j++;
+            }
+            b[i].setText(Integer.toString(a[i]));
+        }
+    }
+
+    public void send(){
+       c.password(ps.getText());
+       Stage s =(Stage) ps.getScene().getWindow();
+       s.close();
+    }
+}
