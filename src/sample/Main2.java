@@ -13,7 +13,7 @@ public class Main2 extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root2 = FXMLLoader.load(getClass().getResource("keysample.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root2, 300, 275));
+        primaryStage.setScene(new Scene( root2 ));
     }
 
     public static void main(String[] args) {

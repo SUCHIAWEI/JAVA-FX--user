@@ -14,7 +14,14 @@ public class User {
     @FXML
     MenuItem game1 , tool1 ;
 
-    public void tool(ActionEvent event)throws Exception{
+    public void tool()throws Exception{
+        Stage stage = new Stage();
+        FXMLLoader fload = new FXMLLoader(getClass().getResource("caesar.fxml"));
+        Parent par = fload.load();
+        stage.setScene(new Scene(par));
+        stage.show();
+    }
+    public void game()throws Exception{
         Stage stage = new Stage();
         FXMLLoader fload = new FXMLLoader(getClass().getResource("caesar.fxml"));
         Parent par = fload.load();

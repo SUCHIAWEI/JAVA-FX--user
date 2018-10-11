@@ -19,61 +19,28 @@ public class Caesar {
     TextField tf1;
     @FXML
     RadioButton ecneypt , decrypt;
-
+    @FXML
+    MenuItem mitem1 , mitem2 , mitem3;
     public void run(ActionEvent event) {
-        int key = Integer.parseInt(tf1.getText());
-        String str = "";
-        if (ecneypt.isSelected()) {
-            //加密
-            for (int i = 0; i < ta1.getLength(); i++) {
-                char c = ta1.getText().charAt(i);
-                if (c >= 'a' && c <= 'z') {
-                    c += key % 26;
-                    if (c < 'a') {
-                        c += 26;
-                    }
-                    if (c > 'z') {
-                        c -= 26;
-                    }
-                }
-                if (c >= 'A' && c <= 'Z') {
-                    c += key % 26;
-                    if (c < 'A') {
-                        c += 26;
-                    }
-                    if (c > 'Z') {
-                        c -= 26;
-                    }
-                }
-                str = str + c;
-                ta2.setText(str);
-            }
-        }
 
-        if (decrypt.isSelected()) {
-            //解密
-            for (int i = 0; i < ta2.getLength(); i++) {
-                char c = ta2.getText().charAt(i);
-                if (c >= 'a' && c <= 'z') {
-                    c -= key % 26;
-                    if (c < 'a') {
-                        c += 26;
-                    }
-                    if (c > 'z') {
-                        c -= 26;
-                    }
+        if (mitem1.isVisible()) {
+            int key = Integer.parseInt(tf1.getText());
+            String str = "";
+            if (ecneypt.isSelected()) {
+                //加密
+                char c[] = ta1.getText().toCharArray();
+                for (int i = 0; i < ta1.getLength(); i++) {
+                    ta2.setText(ta2.getText() + (char) (c[i] + key));
+
                 }
-                if (c >= 'A' && c <= 'Z') {
-                    c -= key % 26;
-                    if (c < 'A') {
-                        c += 26;
-                    }
-                    if (c > 'Z') {
-                        c -= 26;
-                    }
+            }
+
+            if (decrypt.isSelected()) {
+                //解密
+                for (int i = 0; i < ta2.getLength(); i++) {
+                    char c[] = ta1.getText().toCharArray();
+                    ta2.setText(ta2.getText() + (char) (c[i] - key));
                 }
-                str = str + c;
-                ta1.setText(str);
             }
         }
     }

@@ -43,8 +43,6 @@ public class Keyboard {
     public void change(ActionEvent event){
         Random ran = new Random();
         int a[] = new int[10];
-        Button b[]= new Button[10];
-
 
         for (int i = 0 ;i<10 ; i++){
             a[i]= ran.nextInt(10);
@@ -55,8 +53,18 @@ public class Keyboard {
                 }
                 else j++;
             }
-            b[i].setText(Integer.toString(a[i]));
         }
+        btn1.setText(Integer.toString(a[0]));
+        btn2.setText(Integer.toString(a[1]));
+        btn3.setText(Integer.toString(a[2]));
+        btn4.setText(Integer.toString(a[3]));
+        btn5.setText(Integer.toString(a[4]));
+        btn6.setText(Integer.toString(a[5]));
+        btn7.setText(Integer.toString(a[6]));
+        btn8.setText(Integer.toString(a[7]));
+        btn9.setText(Integer.toString(a[8]));
+        btn10.setText(Integer.toString(a[9]));
+
     }
 
     public void send(){

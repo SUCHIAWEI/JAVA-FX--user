@@ -17,13 +17,15 @@ public class Controller {
     private TextField txf1;
     @FXML
     private PasswordField ps1;
-
     @FXML
-    public void account(){
+    public Button exit ;
 
-    }
     public void password(String p){
         ps1.setText(p);
+    }
+
+    public void exit(ActionEvent event){
+        System.exit(0);
     }
     @FXML
     public void login(ActionEvent event) throws Exception{
@@ -43,7 +45,7 @@ public class Controller {
     public void keyboard(ActionEvent event) throws Exception{
         Stage stage = new Stage();
         FXMLLoader fload = new FXMLLoader(getClass().getResource("keysample.fxml"));
-        Parent par = fload.load();
+        Parent par = fload.load();//解析fxml黨
         stage.setScene(new Scene(par));
         stage.show();
 
@@ -66,5 +68,9 @@ public class Controller {
             b[i].setText(Integer.toString(a[i]));
         }
         ctrl.setBtn(b);
+    }
+
+    public void exit(){
+        System.exit(0);
     }
 }
