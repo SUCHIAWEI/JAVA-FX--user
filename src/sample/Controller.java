@@ -24,13 +24,9 @@ public class Controller {
         ps1.setText(p);
     }
 
-    public void exit(ActionEvent event){
-        System.exit(0);
-    }
-    @FXML
     public void login(ActionEvent event) throws Exception{
-        String acc = "h103";
-        String ps ="106021381";
+        String acc = "h103";//帳號
+        String ps ="106021381";//密碼
         if (txf1.getText().equals(acc)){
             if (ps1.getText().equals(ps)){
                 Stage stage = new Stage();
@@ -43,6 +39,7 @@ public class Controller {
     }
     @FXML
     public void keyboard(ActionEvent event) throws Exception{
+        //開啟鍵盤畫面
         Stage stage = new Stage();
         FXMLLoader fload = new FXMLLoader(getClass().getResource("keysample.fxml"));
         Parent par = fload.load();//解析fxml黨
@@ -69,6 +66,7 @@ public class Controller {
         }
         ctrl.setBtn(b);
     }
+
 
     public void exit(){
         System.exit(0);
