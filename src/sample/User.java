@@ -23,7 +23,7 @@ public class User {
     }
     public void game()throws Exception{
         Stage stage = new Stage();
-        FXMLLoader fload = new FXMLLoader(getClass().getResource("caesar.fxml"));
+        FXMLLoader fload = new FXMLLoader(getClass().getResource("game.fxml"));
         Parent par = fload.load();
         stage.setScene(new Scene(par));
         stage.show();

@@ -21,11 +21,9 @@ public class Caesar {
     RadioButton ecneypt , decrypt;
     @FXML
     MenuItem mitem1 , mitem2 , mitem3;
-    public void run(ActionEvent event) {
-
+    public void run() {
         if (mitem1.isVisible()) {
             int key = Integer.parseInt(tf1.getText());
-            String str = "";
             if (ecneypt.isSelected()) {
                 //加密
                 char c[] = ta1.getText().toCharArray();
@@ -38,8 +36,8 @@ public class Caesar {
             if (decrypt.isSelected()) {
                 //解密
                 for (int i = 0; i < ta2.getLength(); i++) {
-                    char c[] = ta1.getText().toCharArray();
-                    ta2.setText(ta2.getText() + (char) (c[i] - key));
+                    char c[] = ta2.getText().toCharArray();
+                    ta1.setText(ta1.getText() + (char) (c[i] - key));
                 }
             }
         }
