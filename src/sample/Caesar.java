@@ -6,8 +6,11 @@ import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.Random;
 
 public class Caesar {
@@ -40,6 +43,14 @@ public class Caesar {
                     ta1.setText(ta1.getText() + (char) (c[i] - key));
                 }
             }
+        }
+    }
+    public void file()throws Exception{
+        if (mitem1.isVisible()){
+            FileChooser fileChooser = new FileChooser();
+            File file = fileChooser.showOpenDialog(null);
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+            fileChooser.getExtensionFilters().add(extFilter);
         }
     }
     public void close(ActionEvent event) {
