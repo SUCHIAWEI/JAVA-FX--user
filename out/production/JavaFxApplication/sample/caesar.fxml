@@ -43,9 +43,9 @@
                         <ToggleGroup fx:id="buttongroup" />
                      </toggleGroup></RadioButton>
                   <RadioButton fx:id="decrypt" mnemonicParsing="false" prefHeight="67.0" prefWidth="203.0" text="Decrypt" toggleGroup="$buttongroup" GridPane.rowIndex="5" />
-                  <Button fx:id="run" mnemonicParsing="false" onAction="#run" prefHeight="45.0" prefWidth="275.0" text="Run" GridPane.rowIndex="6" />
-                  <Button fx:id="close" contentDisplay="TOP" mnemonicParsing="false" onAction="#close" prefHeight="44.0" prefWidth="223.0" text="Close" GridPane.rowIndex="7" />
-                  <MenuButton mnemonicParsing="false" text="DES" GridPane.rowIndex="1">
+                  <Button fx:id="run" mnemonicParsing="false" onAction="#run" prefHeight="38.0" prefWidth="173.0" text="Run" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                  <Button fx:id="close" contentDisplay="TOP" mnemonicParsing="false" onAction="#close" prefHeight="35.0" prefWidth="162.0" text="Close" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                  <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="102.0" text="DES" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                     <items>
                       <MenuItem fx:id="mitem1" mnemonicParsing="false" text="AES" />
                       <MenuItem fx:id="mitem2" mnemonicParsing="false" text="caesar" />

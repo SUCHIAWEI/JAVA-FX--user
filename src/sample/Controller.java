@@ -24,7 +24,7 @@ public class Controller {
         ps1.setText(p);
     }
 
-    public void login(ActionEvent event) throws Exception{
+    public void login() throws Exception{
         String acc = "h103";//帳號
         String ps ="106021381";//密碼
         if (txf1.getText().equals(acc)){
@@ -34,11 +34,13 @@ public class Controller {
                 Parent par = fload.load();
                 stage.setScene(new Scene(par));
                 stage.show();
+                Stage s =(Stage)txf1.getScene().getWindow();
+                s.close();
             }
         }
     }
     @FXML
-    public void keyboard(ActionEvent event) throws Exception{
+    public void keyboard() throws Exception{
         //開啟鍵盤畫面
         Stage stage = new Stage();
         FXMLLoader fload = new FXMLLoader(getClass().getResource("keysample.fxml"));
