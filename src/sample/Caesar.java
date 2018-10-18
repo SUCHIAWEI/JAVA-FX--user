@@ -9,8 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Random;
 
 public class Caesar {
@@ -26,17 +25,18 @@ public class Caesar {
     MenuItem mitem1 , mitem2 , mitem3;
     public void run() {
         if (mitem1.isVisible()) {
+            ta2.setText("");
             int key = Integer.parseInt(tf1.getText());
             if (ecneypt.isSelected()) {
                 //加密
                 char c[] = ta1.getText().toCharArray();
                 for (int i = 0; i < ta1.getLength(); i++) {
                     ta2.setText(ta2.getText() + (char) (c[i] + key));
-
                 }
             }
 
             if (decrypt.isSelected()) {
+                ta1.setText("");
                 //解密
                 for (int i = 0; i < ta2.getLength(); i++) {
                     char c[] = ta2.getText().toCharArray();
@@ -45,15 +45,34 @@ public class Caesar {
             }
         }
     }
-    public void file()throws Exception{
-        if (mitem1.isVisible()){
+    public void file(ActionEvent event)throws Exception{
+        if ((event.getSource()).equals(mitem1)){
+
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showOpenDialog(null);
-            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
-            fileChooser.getExtensionFilters().add(extFilter);
+//            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+//            fileChooser.getExtensionFilters().add(extFilter);
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            while (bufferedReader.ready()){
+                ta1.setText(ta1.getText()+bufferedReader.readLine());
+            }
+            bufferedReader.close();
+        }
+        else if ((event.getSource()).equals(mitem2)){
+
+            FileChooser fileChooser = new FileChooser();
+            File file = fileChooser.showSaveDialog(null);
+            file = new BufferedReader(new F)
+            FileWriter fileWriter = new FileWriter(ta1.getText());
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(ta1.getText());
+            bufferedWriter.flush();
+            bufferedWriter.close();
+
         }
     }
-    public void close(ActionEvent event) {
+    public void close() {
         System.exit(0);
     }
+
 }
