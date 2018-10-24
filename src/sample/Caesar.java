@@ -50,8 +50,6 @@ public class Caesar {
 
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showOpenDialog(null);
-//            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
-//            fileChooser.getExtensionFilters().add(extFilter);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             while (bufferedReader.ready()){
                 ta1.setText(ta1.getText()+bufferedReader.readLine());
@@ -59,14 +57,12 @@ public class Caesar {
             bufferedReader.close();
         }
         else if ((event.getSource()).equals(mitem2)){
-
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showSaveDialog(null);
-            file = new BufferedReader(new F)
-            FileWriter fileWriter = new FileWriter(ta1.getText());
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            file.createNewFile(); 
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
             bufferedWriter.write(ta1.getText());
-            bufferedWriter.flush();
+            bufferedWriter.flush(); // 把緩存區內容壓入文檔
             bufferedWriter.close();
 
         }
