@@ -16,44 +16,46 @@ public class Namechange {
     @FXML
     ComboBox <String>combobox1;
 
+    public int data[];
+    private File in ,save;
+
     public void initialize(){
         combobox1.getItems().addAll("Caesar","XOR");
     }
     public void choose1(){
-        try {
             FileChooser fileChooser = new FileChooser();
-            File file = fileChooser.showOpenDialog(null);
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            tf1.setText(file.getPath());
-        }
-        catch (IOException i){
-            JOptionPane.showMessageDialog(null , "error");
-        }
-
-
+            in = fileChooser.showOpenDialog(null);
+            tf1.setText(in.getPath());
     }
-    public void choose2(){
-//        try {
-//            FileChooser fileChooser = new FileChooser();
-//            File file = fileChooser.showOpenDialog(null);
-//            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-//            tf1.setText(file.getPath());
-//        }
-//        catch (IOException i){
-//            JOptionPane.showMessageDialog(null , "error");
-//        }
+    public void choose2() {
+        if (in != null) {
+            try {
+                FileChooser chooser = new FileChooser();
+                save = chooser.showSaveDialog(null);
+                tf2.setText(save.getPath());
+                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(save));
+                for (int i = 0; i < data.length; i++) {
+                    bufferedOutputStream.write(data[i]);
+                    bufferedOutputStream.flush();
+                }
+                bufferedOutputStream.close();
+            }
+            catch (IOException i) {
+                JOptionPane.showMessageDialog(null , "沒有檔案");
+            }
+        }
     }
 
     public void run(){
         if (combobox1.getValue().equals("Caesar")){
             try {
-                FileChooser fileChooser = new FileChooser();
-                File file = fileChooser.showOpenDialog(null);
-                BufferedInputStream bufferedInputStream  = new BufferedInputStream(new FileInputStream(file));
-                int data[] = new int[bufferedInputStream.available()];
+                BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(in));
+                data = new int[inputStream.available()];
                 for (int i = 0 ; i<data.length ; i++){
-                    data[i] = bufferedInputStream.read()+Integer.parseInt(tfk.getText());
+                    data[i] = inputStream.read()+Integer.parseInt(tfk.getText());
                 }
+                tf2.setText("加密完成 點選Choose 儲存檔案");
+                inputStream.close();
             }catch (IOException i){
                 JOptionPane.showMessageDialog(null , "沒有檔案");
             }
