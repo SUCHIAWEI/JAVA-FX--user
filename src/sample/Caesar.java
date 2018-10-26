@@ -59,7 +59,7 @@ public class Caesar {
         else if ((event.getSource()).equals(mitem2)){
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showSaveDialog(null);
-            file.createNewFile(); 
+            file.createNewFile();
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
             bufferedWriter.write(ta1.getText());
             bufferedWriter.flush(); // 把緩存區內容壓入文檔
