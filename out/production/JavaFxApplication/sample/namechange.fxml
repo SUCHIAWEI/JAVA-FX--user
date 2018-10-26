@@ -6,10 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="187.0" prefWidth="549.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Namechange">
+<AnchorPane prefHeight="210.0" prefWidth="549.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Namechange">
    <children>
-      <BorderPane layoutX="3.0" layoutY="-1.0" prefHeight="187.0" prefWidth="544.0">
+      <BorderPane layoutX="3.0" layoutY="12.0" prefHeight="187.0" prefWidth="544.0">
          <top>
             <GridPane prefHeight="30.0" prefWidth="544.0" BorderPane.alignment="CENTER">
               <columnConstraints>
@@ -25,7 +24,7 @@
               </rowConstraints>
                <children>
                   <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="82.0" text="加密法" />
-                  <ComboBox fx:id="combobox1"  prefHeight="69.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                  <ComboBox fx:id="combobox1" prefHeight="69.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
                   <TextField fx:id="tfk" prefHeight="70.0" prefWidth="91.0" GridPane.columnIndex="3" />
                   <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="86.0" text="Key" GridPane.columnIndex="2" />
                   <Button fx:id="btrun" mnemonicParsing="false" onAction="#run" prefHeight="30.0" prefWidth="84.0" text="Run" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
