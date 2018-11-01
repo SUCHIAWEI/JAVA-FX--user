@@ -2,34 +2,73 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.paint.Color;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.Timer;
+import java.awt.event.ActionListener;
 
 public class Timing {
-    Image img0 = new Image("0.GIF");
-    Image img1 = new Image("1.GIF");
-    Image img2 = new Image("2.GIF");
-    Image img3 = new Image("3.GIF");
-    Image img4 = new Image("4.GIF");
-    Image img5 = new Image("5.GIF");
-    Image img6 = new Image("6.GIF");
-    Image img7 = new Image("7.GIF");
-    Image img8 = new Image("8.GIF");
-    Image img9 = new Image("9.GIF");
+
+    Image img[] = new Image[10];
+    int s = 0;
+    int m = 0;
+    int h = 0;
 
     @FXML
-    ImageView imgv1 , imgv2 , imgv3 , imgv4 ;
+    ImageView imgv1 , imgv2 , imgv3 , imgv4 ,imgv5 , imgv6 ;
     @FXML
-    Button run;
+    Button run , pause , exit;
+    @FXML
+    Label lb1;
 
-    int min =
 
-    public void run(){
-        t.start();
-
+    public void initialize(){
+        for (int i = 0 ;i < 10 ;i++){
+            img[i] = new Image("sample/number/"+i+".png");
+        }
     }
 
+
+    Timer t = new Timer(1000, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            s=s+1;
+            if (s==60){
+                s=0;
+                m++;
+                if (m==60){
+                    m=0;
+                    h++;
+                }
+            }
+            else {
+                imgv6.setImage( img[s%10] );
+                imgv5.setImage( img[s/10] );
+                imgv4.setImage( img[m%10] );
+                imgv3.setImage( img[m/10] );
+                imgv2.setImage( img[h%10] );
+                imgv1.setImage( img[h/10] );
+            }
+        }
+    });
+    public void run(){
+        t.start();
+    }
+
+
+    public void pause(javafx.event.ActionEvent actionEvent) {
+        t.stop();
+    }
+
+
+    public void exit(javafx.event.ActionEvent actionEvent) {
+        System.exit(0);
+    }
 }
