@@ -7,10 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="458.0" prefWidth="566.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Move">
    <children>
-      <BorderPane layoutY="-5.0" prefHeight="469.0" prefWidth="570.0">
+      <BorderPane layoutY="-5.0" onKeyPressed="#key" prefHeight="469.0" prefWidth="570.0">
          <bottom>
             <GridPane BorderPane.alignment="CENTER">
               <columnConstraints>
@@ -35,11 +34,12 @@
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="imgv" fitHeight="137.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgv" fitHeight="137.0" fitWidth="120.0" onKeyPressed="#key" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@稻草人_右.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="212.0" layoutY="137.0" mnemonicParsing="false" onAction="#trtrtrtr" text="Button" />
                </children>
             </Pane>
          </center>
