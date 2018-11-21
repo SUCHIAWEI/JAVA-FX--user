@@ -39,6 +39,7 @@
                         <Image url="@稻草人_右.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="212.0" layoutY="137.0" mnemonicParsing="false" onAction="#trtrtrtr" text="Button" />
                </children>
             </Pane>
          </center>
