@@ -17,16 +17,17 @@ public class Login {
 
     Server server ;
 
+    public void initialize() {
+
+    }
     public void setServer(Server server) {
         this.server = server;
     }
     public void getip(){
         server.ip(ipTextField.getText());
-    }
 
-    public void initialize(){
 
-//        int port = Integer.parseInt(portTextField.getText());
+
 
         //Server端
         try {

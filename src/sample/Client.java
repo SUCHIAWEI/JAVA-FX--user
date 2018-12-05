@@ -1,31 +1,57 @@
 package sample;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Client {
-    public void Client () {
+public class Client extends Thread{
+    public TextArea txr;
+    public TextField txf;
+    private Socket socket ;
+    private PrintStream outputStream ;
+    private BufferedReader inputStream ;
 
-//    Client端
-        byte buff[] = new byte[1024];
+    public void initialize(){
+        Client c = new Client();
+        c.start();
+    }
 
+
+    public void send(ActionEvent event) {
+        txr.setText(txr.getText()+"Client:"+txf.getText()+"\n");
+        txf.setText("");
+    }
+
+
+    public void run(){
         try {
-            Socket s = new Socket("10.51.3.61", 1234);
-            System.out.println("開始連線");
-            InputStream inputStream= s.getInputStream();
-            int n = inputStream.read(buff);
-            System.out.println(new String(buff ,0 , n));
-            inputStream.close();
-            s.close();
+            socket = new Socket("127.0.0.1", 1234);
+            outputStream = new PrintStream(socket.getOutputStream());
+            inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            System.out.println("wellcome");
+            String str ="";
+            while (!(str=inputStream.readLine()).equals("")){
+                addMessage(str);
+            }
         }
-        catch (IOException i){
+        catch (IOException  e){
+            System.out.println("error");
+        }
+    }
+    public void addMessage(String message){
+        txr.setText(txr.getText()+"Server:"+message +"\n");
+    }
+    public void send (String send){
+        try {
+            if (outputStream!=null){
+                outputStream.println(send);
+            }
+        }catch (Exception e){
             System.out.println("error");
         }
     }
