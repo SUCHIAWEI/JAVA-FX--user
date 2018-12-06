@@ -17,23 +17,25 @@ public class Client extends Thread{
     private BufferedReader inputStream ;
 
     public void initialize(){
-        Client c = new Client();
-        c.start();
+        this.start();
     }
 
 
     public void send(ActionEvent event) {
+        send(txf.getText());
         txr.setText(txr.getText()+"Client:"+txf.getText()+"\n");
         txf.setText("");
+        if (txf.getText().equals("88")){
+        }
     }
 
 
     public void run(){
         try {
-            socket = new Socket("127.0.0.1", 1234);
+            socket = new Socket("10.51.3.61", 1234);
             outputStream = new PrintStream(socket.getOutputStream());
             inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            System.out.println("wellcome");
+            System.out.println("welcome");
             String str ="";
             while (!(str=inputStream.readLine()).equals("")){
                 addMessage(str);

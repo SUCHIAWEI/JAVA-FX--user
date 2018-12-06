@@ -24,9 +24,8 @@ public class Server extends Thread{
      String ip;
      private Server s ;
      public void initialize(){
-//         s.start();
-        Server s =new Server();
-        s.start();
+         ip("123");
+       this.start();
      }
 
     public void ip(String string) {
@@ -40,6 +39,7 @@ public class Server extends Thread{
         }
     }
     public void send(ActionEvent event) {
+         sendM(txf.getText());
          txr.setText(txr.getText()+"Sever:"+txf.getText()+"\n");
          txf.setText("");
     }
@@ -48,15 +48,12 @@ public class Server extends Thread{
             socket = serverSocket.accept();
             outputStream = new PrintStream(socket.getOutputStream());
             inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            System.out.println("wellcome");
+            System.out.println("welcome");
             String str ="";
             while (!(str=inputStream.readLine()).equals("")){
                 addMessage(str);
             }
         }
-
-//            outputStream.close();
-//            s.close();
         catch (IOException  e){
             System.out.println("error");
         }
@@ -65,13 +62,16 @@ public class Server extends Thread{
     public String getIp() {
         return ip;
     }
+
     public void addMessage(String message){
             txr.setText(txr.getText()+"Client"+message +"\n");
     }
-    public void send (String send){
+
+    public void sendM (String send){
         try {
             if (outputStream!=null){
                 outputStream.println(send);
+                outputStream.flush();
             }
         }catch (Exception e){
             System.out.println("error");
